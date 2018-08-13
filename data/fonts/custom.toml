@@ -1,0 +1,15 @@
+# Font style metadata
+name = "Custom"
+
+# Optional Google font URL
+google_fonts = "Montserrat:300,400,700|Roboto:400,400italic,700|Lato:400|Oswald:300|Fira+Mono|Roboto+Mono"
+
+# Font families
+heading_font = "Lato"
+body_font = "Lato"
+nav_font = "Montserrat"
+mono_font = "Fira Mono"
+
+# Font size
+font_size = "20"
+font_size_small = "18"

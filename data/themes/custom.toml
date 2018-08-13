@@ -1,0 +1,20 @@
+# Theme metadata
+name = "Custom"
+
+# Is theme light or dark?
+light = true
+
+# Primary
+primary = "#3AA8AB" # OHSU text part
+primary_light = "#4BDADE"
+primary_dark = "#4BDADE"
+
+# Menu
+menu_primary = "#fff" # keep
+menu_text = "#3C5D5E" #"#34495e"
+menu_text_active = "#3AA8AB" 
+menu_title = "#2b2b2b"
+
+# Home sections
+home_section_odd = "rgb(255, 255, 255)"
+home_section_even = "rgb(247, 247, 247)"
