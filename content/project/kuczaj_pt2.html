@@ -2,14 +2,13 @@
 title: "Kuczaj Corpus Sentiment Analysis, Part 2"
 author: "Grace Lawley"
 date: "2018-08-08"
-output: html_document
 
 summary: "A continuation of a sentiment analysis of child language acquisition data using the Kuczaj Corpus from the CHILDES database."
 ---
 
 
 
-<p>This past June, I did a (sentiment analysis of the Kuczaj Corpus)[project/final_vis] from the CHILDES database for my final project in the Data Visualization class taught by Alison Presmanes Hill, Steven Bedrick, and Jackie Wirz. During my presentation some of the questions that came up were: Does the total number of words per transcript vary a lot? How much is this effecting the sentiment analysis? What would happen to the plot if I normalized for transcript length?</p>
+<p>This past June, I did a <a href="https://grace.rbind.io/project/final_vis/">sentiment analysis of the Kuczaj Corpus</a> from the CHILDES database for my final project in the Data Visualization class taught by Alison Presmanes Hill, Steven Bedrick, and Jackie Wirz. During my presentation some of the questions that came up were: Does the total number of words per transcript vary a lot? How much is this effecting the sentiment analysis? What would happen to the plot if I normalized for transcript length?</p>
 <p>The length of the transcripts <em>does</em> vary a great deal, both before and after processing and filtering against the nrc sentiment lexicon. I had actually noticed this artifact in the dataset when working on the project and had plans to address it. I ended up not having enough time to explore different normalization techniques and included a limitations section discussing how this could affect the visualizations I created.</p>
 <p>Now, two months later, I am revisiting these questions and am going to find out what will happen if I normalize for transcript length!</p>
 <p>Here are the packages that I will be using:</p>
@@ -75,12 +74,13 @@ ages_binned2 &lt;- aux %&gt;%
 <pre class="r"><code># Normalizing!
 ages_binned2 &lt;- ages_binned2 %&gt;% 
   mutate(percent = n_sentiment/n_tokens)</code></pre>
-<p>It is import to note the number of tokens in each age bin varies a lot across each bin. I decided to move forward with the visualizations without addressing this point but would ideally have liked to explore some weighting options. Unfortunately, I was unable to do so in this version, and this is a limitation of all plots that follow in this post.</p>
+<p>It is important to note the number of tokens in each age bin varies a lot. How much does it vary?</p>
 <pre class="r"><code>ggplot(ages_binned2, aes(age_months, n_tokens)) +
   geom_point() + 
   labs(title = &quot;Total number of tokens per age bin&quot;) +
   theme_minimal()</code></pre>
-<p><img src="/project/kuczaj_pt2_files/figure-html/bins-1.png" width="3000" /></p>
+<p><img src="/project/kuczaj_pt2_files/figure-html/bins-1.png" width="3000" />
+I decided to move forward for this iteration of the project without addressing this further but would ideally like to explore some weighting options in the future. So please just keep these limitations in mind when viewing the visualizations that follow.</p>
 <p>To get orientated with the data I started by making this quick and minimal scatterplot.</p>
 <pre class="r"><code>ggplot(ages_binned2, aes(age_months, percent, color = sentiment)) +
   geom_point(alpha = 0.7) +

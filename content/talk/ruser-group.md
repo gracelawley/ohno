@@ -35,9 +35,9 @@ tags = []
 
 # Links (optional).
 url_pdf = ""
-url_slides = ""
+url_slides = "slides/ruser_dataviz"
 url_video = ""
-url_code = ""
+url_code = "https://raw.githubusercontent.com/gracelawley/gracelawley/master/content/project/kuczaj_pt2.Rmd"
 url_custom = [{name = "Github Repo", url = "https://github.com/gracelawley/kuczaj-corpus"}]
 
 # Does the content use math formatting?

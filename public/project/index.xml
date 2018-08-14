@@ -18,7 +18,7 @@
       <pubDate>Wed, 08 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>/project/kuczaj_pt2/</guid>
-      <description>This past June, I did a (sentiment analysis of the Kuczaj Corpus)[project/final_vis] from the CHILDES database for my final project in the Data Visualization class taught by Alison Presmanes Hill, Steven Bedrick, and Jackie Wirz. During my presentation some of the questions that came up were: Does the total number of words per transcript vary a lot? How much is this effecting the sentiment analysis? What would happen to the plot if I normalized for transcript length?</description>
+      <description>This past June, I did a sentiment analysis of the Kuczaj Corpus from the CHILDES database for my final project in the Data Visualization class taught by Alison Presmanes Hill, Steven Bedrick, and Jackie Wirz. During my presentation some of the questions that came up were: Does the total number of words per transcript vary a lot? How much is this effecting the sentiment analysis? What would happen to the plot if I normalized for transcript length?</description>
     </item>
     
     <item>
