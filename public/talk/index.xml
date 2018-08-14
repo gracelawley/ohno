@@ -18,7 +18,9 @@
       <pubDate>Sun, 01 Jan 2017 00:00:00 -0800</pubDate>
       
       <guid>/talk/ruser-group/</guid>
-      <description>Embed your slides or video here using shortcodes. Further details can easily be added using Markdown and $\rm \LaTeX$ math code.</description>
+      <description>Join us for a night of four talks from students in OHSU&amp;rsquo;s Principles and Practice of Data Visualization, taught by Alison Hill, Steve Bedrick, and Jackie Wirz (https://github.com/apreshill/data-vis-labs-2018 | https://apreshill.github.io/data-vis-labs-2018/).
+Speakers:
+ Alex Salem: A Sentimental Analysis of Tolstoy Grace Lawley: A Sentiment Analysis of Child Language Acquisition Data Ryan Opel: Sole Mates: Analysis of Nike&amp;rsquo;s BIKETOWN Sneaker Bikes Alexandra Michel: Winning at Twitter with ggplot: What&amp;rsquo;s Up With Colorado Basin Water Use?</description>
     </item>
     
   </channel>

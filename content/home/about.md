@@ -4,8 +4,10 @@ widget = "about"
 active = true
 date = 2016-04-20T00:00:00
 
+
 # Order that this section will appear in.
 weight = 5
+
 
 # List your academic interests.
 [interests]
@@ -24,9 +26,10 @@ weight = 5
  
 +++
 
-# Biography
 
-Hi! My name is Grace Lawley. I am a first-year Ph.D student in the Computer Science & Electrical Engineering program at the Center for Spoken Language Understanding [(CSLU)](https://www.ohsu.edu/xd/research/centers-institutes/center-for-spoken-language-understanding/) at Oregon Health & Science University [(OHSU)](https://www.ohsu.edu/xd/) in Portland, Oregon.
+# About Me
+
+Hi! My name is Grace Lawley. I am a first-year Ph.D student in the Computer Science & Electrical Engineering program at the [Center for Spoken Language Understanding (CSLU)](https://www.ohsu.edu/xd/research/centers-institutes/center-for-spoken-language-understanding/) at [Oregon Health & Science University (OHSU)](https://www.ohsu.edu/xd/) in Portland, Oregon.
 
 I graduated from Lewis & Clark College in 2017 with a B.A. in Mathematics. My interests include discrete math, data science, computational linguistics, Rachmaninoff, ceramics, and the programming language R.
 

@@ -1,0 +1,160 @@
+---
+title: "Kuczaj Corpus Sentiment Analysis, Part 2"
+author: "Grace Lawley"
+date: "2018-08-08"
+output: html_document
+
+summary: "A continuation of a sentiment analysis of child language acquisition data using the Kuczaj Corpus from the CHILDES database."
+---
+
+
+
+<p>This past June, I did a (sentiment analysis of the Kuczaj Corpus)[project/final_vis] from the CHILDES database for my final project in the Data Visualization class taught by Alison Presmanes Hill, Steven Bedrick, and Jackie Wirz. During my presentation some of the questions that came up were: Does the total number of words per transcript vary a lot? How much is this effecting the sentiment analysis? What would happen to the plot if I normalized for transcript length?</p>
+<p>The length of the transcripts <em>does</em> vary a great deal, both before and after processing and filtering against the nrc sentiment lexicon. I had actually noticed this artifact in the dataset when working on the project and had plans to address it. I ended up not having enough time to explore different normalization techniques and included a limitations section discussing how this could affect the visualizations I created.</p>
+<p>Now, two months later, I am revisiting these questions and am going to find out what will happen if I normalize for transcript length!</p>
+<p>Here are the packages that I will be using:</p>
+<pre class="r"><code># Loading packages
+library(tidyverse)
+library(tidytext)
+library(forcats)
+library(skimr)
+library(egg)</code></pre>
+<p>I saved the version of the dataset that I used to create the ridgeline density plots as a csv file so I could pick up where I left off.</p>
+<pre class="r"><code># reading in data
+kuczaj &lt;- read_csv(&quot;data/kuczaj_nrc.csv&quot;)     </code></pre>
+<p>Here’s a glimpse of what <code>kuczaj</code> looks like:</p>
+<pre class="r"><code>glimpse(kuczaj)</code></pre>
+<pre><code>## Observations: 22,893
+## Variables: 4
+## $ age_months &lt;dbl&gt; 29.00060, 29.00060, 29.00060, 29.00060, 29.00060, 2...
+## $ age_years  &lt;dbl&gt; 2.416716, 2.416716, 2.416716, 2.416716, 2.416716, 2...
+## $ word       &lt;chr&gt; &quot;hurt&quot;, &quot;hurt&quot;, &quot;hurt&quot;, &quot;hurt&quot;, &quot;break&quot;, &quot;cry&quot;, &quot;cr...
+## $ sentiment  &lt;chr&gt; &quot;anger&quot;, &quot;fear&quot;, &quot;negative&quot;, &quot;sadness&quot;, &quot;surprise&quot;,...</code></pre>
+<p>Since I only worked with the “trust”, “joy”, “anticipation”, “sadness”, “fear”, and “anger” sentiments last time, I am going to filter out all other sentiments from the dataframe. I’m also going to coerce <code>sentiment</code> to a factor and will order its levels with the positively associated ones before the negatively associated ones to make plotting easier later on.</p>
+<pre class="r"><code># Sentiments to keep
+sentiment_levels &lt;- c(&quot;trust&quot;, &quot;joy&quot;, &quot;anticipation&quot;, 
+                      &quot;sadness&quot;, &quot;fear&quot;, &quot;anger&quot;)
+
+# Making sentiment a factor
+kuczaj &lt;- kuczaj %&gt;% 
+  select(-age_years, -word) %&gt;% # removing unneeded columns
+  filter(sentiment %in% sentiment_levels) %&gt;% 
+  mutate(sentiment = factor(sentiment, levels = sentiment_levels))</code></pre>
+<p>The transcripts were collected very frequently, so there end up being separate transcripts when Abe is 30.13204, 30.19775, and 30.32916 months old. There are 207 unique values of <code>age_month</code> alone. To make the data easier to plot, I chose to bin the observations together by taking the floor of <code>age_months</code> and then normalizing each unique age bin. This brings down the total unique values of <code>age_month</code> to 33, which will be a lot easier to plot. I also chose to remove the observations that fall into the edge age bins so that only “complete” bins are included.</p>
+<pre class="r"><code># Taking the floor of age_months
+ages_binned &lt;- kuczaj %&gt;% 
+  mutate(age_months = floor(age_months)) 
+
+
+# Removing the two edge bins
+ages_binned &lt;- ages_binned %&gt;% 
+  filter(age_months &gt;= 29 &amp; age_months &lt;= 60)</code></pre>
+<p>To normalize by transcript length, for each of the age bins, I will count the total times each of the 6 sentiments is observed and then divide that number by the total number of sentiment tokens observed.</p>
+<pre class="r"><code># Counting the number of sentiments 
+ages_binned &lt;- ages_binned %&gt;% 
+  add_count(age_months, sentiment) %&gt;% 
+  rename(n_sentiment = n) %&gt;% 
+  distinct(age_months, sentiment, .keep_all = TRUE)
+
+
+# Adding in count for total tokens per transcript that were kept
+ages_binned &lt;- ages_binned %&gt;% 
+  group_by(age_months) %&gt;% 
+  mutate(n_tokens = sum(n_sentiment)) %&gt;% 
+  ungroup()</code></pre>
+<p>Before I can move on to dividing <code>n_sentiment</code> by <code>n_tokens</code>, I first have to add in rows for when a sentiment is not observed for a particular age bin. Since I used <code>add_count</code> to calculate <code>n_sentiment</code>, I’m missing these 0 value rows in my dataframe currently. Using the <code>expand()</code> function from the <code>tidyr</code> package, I can create a dataframe, <code>aux</code>, that has all possible combinations of <code>age_months</code>, <code>n_tokens</code> and <code>sentiment</code>. I can then join this dataframe with my <code>ages_binned</code> dataframe to have rows for all 6 sentiments for each age bin.</p>
+<pre class="r"><code># Creating the auxiliary table with all combinations
+aux &lt;- ages_binned %&gt;% 
+  expand(nesting(age_months, n_tokens), sentiment)
+
+# Merging aux with ages_binned
+ages_binned2 &lt;- aux %&gt;% 
+  left_join(ages_binned, by = c(&quot;age_months&quot;, &quot;n_tokens&quot;, &quot;sentiment&quot;)) %&gt;% 
+  replace_na(list(n_sentiment = 0)) # replacing NA values with 0</code></pre>
+<p>Now, I can normalize! I calculate the <code>percent</code> column by dividing the number of tokens of each sentiment for each age bin by the total number of tokens for that age bin overall.</p>
+<pre class="r"><code># Normalizing!
+ages_binned2 &lt;- ages_binned2 %&gt;% 
+  mutate(percent = n_sentiment/n_tokens)</code></pre>
+<p>It is import to note the number of tokens in each age bin varies a lot across each bin. I decided to move forward with the visualizations without addressing this point but would ideally have liked to explore some weighting options. Unfortunately, I was unable to do so in this version, and this is a limitation of all plots that follow in this post.</p>
+<pre class="r"><code>ggplot(ages_binned2, aes(age_months, n_tokens)) +
+  geom_point() + 
+  labs(title = &quot;Total number of tokens per age bin&quot;) +
+  theme_minimal()</code></pre>
+<p><img src="/project/kuczaj_pt2_files/figure-html/bins-1.png" width="3000" /></p>
+<p>To get orientated with the data I started by making this quick and minimal scatterplot.</p>
+<pre class="r"><code>ggplot(ages_binned2, aes(age_months, percent, color = sentiment)) +
+  geom_point(alpha = 0.7) +
+  facet_wrap(~ sentiment) +
+  guides(color = FALSE) +
+  theme_minimal()</code></pre>
+<p><img src="/project/kuczaj_pt2_files/figure-html/plot1-1.png" width="3000" /></p>
+<p>…and then on second thought, I decided to switch over to a bar chart.</p>
+<pre class="r"><code>ggplot(ages_binned2, aes(age_months, percent, fill = sentiment)) +
+  geom_col(alpha = 0.7) +
+  facet_grid(sentiment ~ .)+
+  guides(fill = FALSE) +
+  theme_minimal()</code></pre>
+<p><img src="/project/kuczaj_pt2_files/figure-html/plot2-1.png" width="3000" /></p>
+<p>This looks better, but having all six plots in one column makes the plots look a little cramped. What if I used a <code>facet_wrap</code> on sentiment?</p>
+<pre class="r"><code>ggplot(ages_binned2, aes(age_months, percent, fill = sentiment)) +
+  geom_col(alpha = 0.7) +
+  facet_wrap(~ sentiment) + 
+  theme_minimal() +
+  labs(x = &quot;&quot;, y = &quot;&quot;) +
+  guides(fill = FALSE)</code></pre>
+<p><img src="/project/kuczaj_pt2_files/figure-html/plot3-1.png" width="3000" /></p>
+<p>…what if I switch the orientation and add in some colors?</p>
+<pre class="r"><code>positive_plot &lt;- ages_binned2 %&gt;% 
+  filter(sentiment %in% c(&quot;trust&quot;, &quot;joy&quot;, &quot;anticipation&quot;)) %&gt;% 
+  ggplot(aes(age_months, percent, fill = sentiment)) +
+    geom_col(alpha = 0.7, color = &quot;white&quot;) +
+    facet_wrap(~sentiment, ncol = 1, scale = &quot;free_x&quot;) +
+    theme_minimal() +
+    labs(x = &quot;&quot;, y = &quot;&quot;, title = &quot;Kuczaj Corpus &amp; Sentiment&quot;) +
+    guides(fill = FALSE) +
+    scale_fill_manual(values = c(&quot;#97B8C7&quot;, &quot;#AEC9C3&quot;, &quot;#7FCCD3&quot;)) 
+
+negative_plot &lt;- ages_binned2 %&gt;% 
+  filter(sentiment %in% c(&quot;sadness&quot;, &quot;fear&quot;, &quot;anger&quot;)) %&gt;% 
+  ggplot(aes(age_months, percent, fill = sentiment)) +
+    geom_col(alpha = 0.7, color = &quot;white&quot;) +
+    facet_wrap(~sentiment, ncol = 1, scale = &quot;free_x&quot;) +
+    theme_minimal() +
+    labs(x = &quot;&quot;, y = &quot;&quot;) +
+    guides(fill = FALSE) +
+    scale_fill_manual(values = c(&quot;#21132B&quot;, &quot;#4F406E&quot;, &quot;#6C7399&quot;))
+
+ggarrange(positive_plot, negative_plot, ncol = 2, nrow = 1)</code></pre>
+<p><img src="/project/kuczaj_pt2_files/figure-html/plot4-1.png" width="3000" /></p>
+<p>Okay, I like this one a lot more. Now let’s customize the axis tick breaks and labels.</p>
+<pre class="r"><code>positive_plot2 &lt;- positive_plot +
+  scale_y_continuous(breaks = c(0.05, 0.15, 0.25),
+                     labels = c(&quot;5%&quot;, &quot;15%&quot;, &quot;25%&quot;)) +
+  scale_x_continuous(breaks = c(30, 36, 42, 48, 54, 60),
+                     labels = c(&quot;2.5 yrs&quot;, &quot;3 yrs&quot;, &quot;3.5 yrs&quot;, &quot;4 yrs&quot;, &quot;4.5 yrs&quot;, &quot;5 yrs&quot;)) 
+
+negative_plot2 &lt;- negative_plot +
+  scale_y_continuous(breaks = c(0.05, 0.15, 0.25),
+                     labels = c(&quot;5%&quot;, &quot;15%&quot;, &quot;25%&quot;)) +
+  scale_x_continuous(breaks = c(30, 36, 42, 48, 54, 60),
+                     labels = c(&quot;2.5 yrs&quot;, &quot;3 yrs&quot;, &quot;3.5 yrs&quot;, &quot;4 yrs&quot;, &quot;4.5 yrs&quot;, &quot;5 yrs&quot;)) 
+
+
+ggarrange(positive_plot2, negative_plot2, ncol = 2, nrow = 1)</code></pre>
+<p><img src="/project/kuczaj_pt2_files/figure-html/plot4a-1.png" width="3000" /></p>
+<p>…and finally let’s change the font face and add in tick marks!</p>
+<pre class="r"><code>positive_plot3 &lt;- positive_plot2 +
+  theme(plot.title = element_text(size = 18, face = &quot;bold&quot;),
+        strip.text = element_text(size = 15, face = &quot;italic&quot;),
+        axis.text.x = element_text(size = 10, face = &quot;italic&quot;),
+        axis.text.y = element_text(size = 10, face = &quot;italic&quot;),
+        axis.ticks.x = element_line())
+
+negative_plot3 &lt;- negative_plot2 +
+  theme(strip.text = element_text(size = 15, face = &quot;italic&quot;),
+        axis.text.x = element_text(size = 10, face = &quot;italic&quot;),
+        axis.text.y = element_text(size = 10, face = &quot;italic&quot;),
+        axis.ticks.x = element_line())
+
+ggarrange(positive_plot3, negative_plot3, ncol = 2, nrow = 1)</code></pre>
+<p><img src="/project/kuczaj_pt2_files/figure-html/plot4b-1.png" width="3000" /></p>

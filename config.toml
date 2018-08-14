@@ -144,7 +144,7 @@ enableGitInfo = true
   #   https://sourcethemes.com/academic/docs/writing-markdown-latex/#highlighting-options
   highlight = true
   highlight_languages = ["r"]
-  highlight_style = "zenburn"
+  highlight_style = "atelier-cave-dark"
   # highlight_style = "github"
 
   # Enable native social sharing buttons?
@@ -259,24 +259,26 @@ enableGitInfo = true
   align_right = true
 
 [[menu.main]]
-  name = "Home"
+  name = "About"
   url = "#about"
   weight = 1
+  
+[[menu.main]]
+  name = "Projects"
+  url = "#projects"
+  weight = 2
 
 [[menu.main]]
   name = "Presentations"
-  url = "#talk"
-  weight = 2
+  url = "#talks"
+  weight = 3
 
 #[[menu.main]]
 #  name = "Posts"
 #  url = "#posts"
 #  weight = 2
 
-[[menu.main]]
-  name = "Projects"
-  url = "#projects"
-  weight = 3
+
 
 [[menu.main]]
   name = "Contact"

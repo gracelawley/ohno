@@ -27,7 +27,7 @@ selected = false
 #   Simply enter your project's filename without extension.
 #   E.g. `projects = ["deep-learning"]` references `content/project/deep-learning.md`.
 #   Otherwise, set `projects = []`.
-projects = []
+projects = ["kuczaj_pt2"]
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
@@ -38,6 +38,7 @@ url_pdf = ""
 url_slides = ""
 url_video = ""
 url_code = ""
+url_custom = [{name = "Github Repo", url = "https://github.com/gracelawley/kuczaj-corpus"}]
 
 # Does the content use math formatting?
 math = true
@@ -53,4 +54,19 @@ caption = ""
 
 +++
 
-Embed your slides or video here using [shortcodes](https://sourcethemes.com/academic/post/writing-markdown-latex/). Further details can easily be added using *Markdown* and $\rm \LaTeX$ math code.
+>Join us for a night of four talks from students in OHSU's Principles and Practice of Data Visualization, taught by Alison Hill, Steve Bedrick, and Jackie Wirz (https://github.com/apreshill/data-vis-labs-2018 | https://apreshill.github.io/data-vis-labs-2018/).
+
+>Speakers:
+
+>- Alex Salem: A Sentimental Analysis of Tolstoy
+>- Grace Lawley: A Sentiment Analysis of Child Language Acquisition Data
+>- Ryan Opel: Sole Mates: Analysis of Nike's BIKETOWN Sneaker Bikes
+>- Alexandra Michel: Winning at Twitter with ggplot: What's Up With Colorado Basin Water Use?
+
+>Presentations will begin at 6:30 pm. Doors open 6:00 pm.
+
+>Location: OHSU Robertson Life Science Building (RLSB) Room 3A001, at OHSU 2730 SW Moody Ave, Portland, OR 97201
+
+
+Twitter: @graceolawley  
+Github: gracelawley

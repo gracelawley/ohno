@@ -7,18 +7,27 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Grace Lawley</copyright>
-    <lastBuildDate>Wed, 27 Apr 2016 00:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 08 Aug 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Kuczaj Corpus</title>
-      <link>/project/deep-learning/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 -0700</pubDate>
+      <title>Kuczaj Corpus Sentiment Analysis, Part 2</title>
+      <link>/project/kuczaj_pt2/</link>
+      <pubDate>Wed, 08 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/project/deep-learning/</guid>
-      <description>def (foo) { &amp;quot;hi&amp;quot; + &amp;quot; &amp;quot; + &amp;quot;there&amp;quot; }  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus.</description>
+      <guid>/project/kuczaj_pt2/</guid>
+      <description>This past June, I did a (sentiment analysis of the Kuczaj Corpus)[project/final_vis] from the CHILDES database for my final project in the Data Visualization class taught by Alison Presmanes Hill, Steven Bedrick, and Jackie Wirz. During my presentation some of the questions that came up were: Does the total number of words per transcript vary a lot? How much is this effecting the sentiment analysis? What would happen to the plot if I normalized for transcript length?</description>
+    </item>
+    
+    <item>
+      <title>Kuczaj Corpus Sentiment Analysis, part 1 </title>
+      <link>/project/final_vis/</link>
+      <pubDate>Sun, 17 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/project/final_vis/</guid>
+      <description>Ridgeline Plot  Description of the Data Over the past few weeks of my research I have been wrangling and exploring a subset of data from the Child Language Data Exchange System (CHILDES), an enormous online repository of language acquisition data that is available online for free. The data that I have been studying is a subset of 14 corpora from the Eng-NA section of CHILDES. The Eng-NA section contains 50+ individual corpora with language acquisition data of exclusively North American English.</description>
     </item>
     
   </channel>
