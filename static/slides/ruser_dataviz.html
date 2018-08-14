@@ -25,23 +25,36 @@ class: center, middle, inverse, title-slide
 
 * Child Language Data Exchange System (CHILDES)  
 
-  + Online repository of language acquisition data
+--
+
+    + Online repository of language acquisition data
   
-  + Corpora of child speech are very hard to come by
+--
   
-  + Used to study language development, language acquisition, etc.
+    + Used to study language development, second language acquisition, child directed speech
+  
+--
+  
+* Why is CHILDES special?
   
 --
 
+    + Corpora of children speaking North American English are **very** hard to come by
+  
+---
+# The Dataset
+
 * CHILDES → Eng-NA → **Kuczaj Corpus**
 
-  + Longitudional Case Study
-  
-  + 1 target child: Abe
-  
-  + ~2 - ~5 years old
-  
-  + 210 transcripts (average of 810 words long)
+--
+
+    + Longitudional Case Study
+    
+    + 1 target child: **Abe**
+    
+    + ~2 - ~5 years old
+    
+    + 210 transcripts (average of 810 words long)
   
 ---
 
@@ -53,26 +66,8 @@ class: center, middle, inverse, title-slide
 
 * Some raw utterances:
 
-```
-## Parsed with column specification:
-## cols(
-##   .default = col_character(),
-##   id = col_integer(),
-##   speaker_id = col_integer(),
-##   utterance_order = col_integer(),
-##   transcript_id = col_integer(),
-##   corpus_id = col_integer(),
-##   num_tokens = col_integer(),
-##   target_child_id = col_integer(),
-##   target_child_age = col_double(),
-##   collection_id = col_integer(),
-##   num_morphemes = col_integer()
-## )
-```
+--
 
-```
-## See spec(...) for full column specifications.
-```
 
 ```
 ## [1] "okay that's a alligator he got a cigar"
@@ -85,10 +80,10 @@ class: center, middle, inverse, title-slide
 
 --
 
-* Cleaned, processed, &amp; tokenized the data
+- **Cleaned**, **processed**, &amp; **tokenized** the data
 
 ---
-# Sentiment Analysis
+# The Sentiment Analysis
 
 --
 
@@ -96,7 +91,18 @@ class: center, middle, inverse, title-slide
 
 --
 
-  + Classifies words into 10 different sentiment categories: **anger**, **disgust**, **fear**, **joy**, **negative**, **positive**, **sadness**, **surprise**, and **trust**
+    + Classifies words into 10 different sentiment categories: 
+
+        - *anger*  
+        - *disgust*    
+        - *fear*  
+        - *joy*  
+        - *negative*  
+        - *sadness*  
+        - *anticipation*  
+        - *surprise*  
+        - *trust*  
+        - *positive*  
 
 --
 
@@ -108,31 +114,31 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# Chose a subset of 6
+# Six sentiments
 
 --
 
-**Positive** 
-
---
+.pull-left[
+## Positive
 
 + *trust* 
 
 + *joy*
 
 + *anticipation*  
+]
 
 --
 
-**Negative** 
-
---
+.pull-right[
+## Negative
 
 + *sadness*
 
 + *fear*
 
 + *anger*
+]
 
 ---
 # The Original Plot
@@ -164,7 +170,7 @@ class: center, middle, inverse, title-slide
 
 * ~86% of tokens were lost when filtering against the NRC Word-Emotion Association Lexicon 
 
-* &lt;span style="color:red"&gt;Transcript length varies a lot&lt;/span&gt;
+* &lt;span style="color:blue"&gt;**Transcript length varies a lot**&lt;/span&gt;
 
 * Distribution of transcripts across the ages varies a lot
 
@@ -172,7 +178,9 @@ class: center, middle, inverse, title-slide
 ---
 # Normalization
 
-* Binned age into months
+* Binned age into months:
+
+    + `30.13204`, `30.19775`, `30.32916`,...`30.59200` → `30`
 
 --
 
@@ -214,7 +222,10 @@ class: inverse, center, middle
 &lt;img src="ruser_dataviz_files/figure-html/plot5_1-1.png" width="2700" /&gt;
 
 ---
-# Version 5.2
+# The Final Version
+
+--
+
 &lt;img src="ruser_dataviz_files/figure-html/plot5_2-1.png" width="2700" /&gt;
 
 ---

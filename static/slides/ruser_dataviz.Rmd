@@ -17,23 +17,36 @@ output:
 
 * Child Language Data Exchange System (CHILDES)  
 
-  + Online repository of language acquisition data
+--
+
+    + Online repository of language acquisition data
   
-  + Corpora of child speech are very hard to come by
+--
   
-  + Used to study language development, language acquisition, etc.
+    + Used to study language development, second language acquisition, child directed speech
+  
+--
+  
+* Why is CHILDES special?
   
 --
 
+    + Corpora of children speaking North American English are **very** hard to come by
+  
+---
+# The Dataset
+
 * CHILDES → Eng-NA → **Kuczaj Corpus**
 
-  + Longitudional Case Study
-  
-  + 1 target child: Abe
-  
-  + ~2 - ~5 years old
-  
-  + 210 transcripts (average of 810 words long)
+--
+
+    + Longitudional Case Study
+    
+    + 1 target child: **Abe**
+    
+    + ~2 - ~5 years old
+    
+    + 210 transcripts (average of 810 words long)
   
 ---
 
@@ -44,7 +57,10 @@ output:
 --
 
 * Some raw utterances:
-```{r echo = FALSE}
+
+--
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
 library(tidyverse)
 
 kuczaj_raw <- read_csv("data/kuczaj_raw.csv")
@@ -53,10 +69,10 @@ kuczaj_raw$gloss[78:83]
 
 --
 
-* Cleaned, processed, & tokenized the data
+- **Cleaned**, **processed**, & **tokenized** the data
 
 ---
-# Sentiment Analysis
+# The Sentiment Analysis
 
 --
 
@@ -64,7 +80,18 @@ kuczaj_raw$gloss[78:83]
 
 --
 
-  + Classifies words into 10 different sentiment categories: **anger**, **disgust**, **fear**, **joy**, **negative**, **positive**, **sadness**, **surprise**, and **trust**
+    + Classifies words into 10 different sentiment categories: 
+
+        - *anger*  
+        - *disgust*    
+        - *fear*  
+        - *joy*  
+        - *negative*  
+        - *sadness*  
+        - *anticipation*  
+        - *surprise*  
+        - *trust*  
+        - *positive*  
 
 --
 
@@ -76,31 +103,31 @@ kuczaj_raw$gloss[78:83]
 
 ---
 
-# Chose a subset of 6
+# Six sentiments
 
 --
 
-**Positive** 
-
---
+.pull-left[
+## Positive
 
 + *trust* 
 
 + *joy*
 
 + *anticipation*  
+]
 
 --
 
-**Negative** 
-
---
+.pull-right[
+## Negative
 
 + *sadness*
 
 + *fear*
 
 + *anger*
+]
 
 ---
 # The Original Plot
@@ -168,7 +195,7 @@ egg::ggarrange(positive_plot, negative_plot, ncol = 1, nrow = 2)
 
 * ~86% of tokens were lost when filtering against the NRC Word-Emotion Association Lexicon 
 
-* <span style="color:red">Transcript length varies a lot</span>
+* <span style="color:blue">**Transcript length varies a lot**</span>
 
 * Distribution of transcripts across the ages varies a lot
 
@@ -176,7 +203,9 @@ egg::ggarrange(positive_plot, negative_plot, ncol = 1, nrow = 2)
 ---
 # Normalization
 
-* Binned age into months
+* Binned age into months:
+
+    + `30.13204`, `30.19775`, `30.32916`,...`30.59200` → `30`
 
 --
 
@@ -330,9 +359,11 @@ ggarrange(positive_plot2, negative_plot2, ncol = 2, nrow = 1)
 ```
 
 ---
-# Version 5.2
-```{r plot5_2, echo = FALSE, dpi = 300, fig.width = 9, fig.height = 5.5}
+# The Final Version
 
+--
+
+```{r plot5_2, echo = FALSE, dpi = 300, fig.width = 9, fig.height = 5.5}
 positive_plot3 <- positive_plot2 +
   theme(plot.title = element_text(size = 18, face = "bold"),
         strip.text = element_text(size = 15, face = "italic"),
