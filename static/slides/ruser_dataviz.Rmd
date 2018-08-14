@@ -45,6 +45,9 @@ output:
 
 * Some raw utterances:
 ```{r echo = FALSE}
+library(tidyverse)
+
+kuczaj_raw <- read_csv("data/kuczaj_raw.csv")
 kuczaj_raw$gloss[78:83]
 ```
 
@@ -351,18 +354,16 @@ class: inverse, center, middle
 
 # Thank you!
 
-Github Repository: [gracelawley/kuczaj-corpus](https://github.com/gracelawley/kuczaj-corpus)  
+*Github Repository:* [gracelawley/kuczaj-corpus](https://github.com/gracelawley/kuczaj-corpus)  
   
   
   
-Write up & code available at: [grace.rbind.io/project/kuczaj_pt2/](grace.rbind.io/project/kuczaj_pt2/)
+*Write up & code available at:*     [https://grace.rbind.io/project/kuczaj_pt2/](/project/kuczaj_pt2/)
   
   
   
-*Slides made with the R package xaringan*  
-These slides - [rendered](static/slides/ruser_dataviz.Rmd)   
-These slides - [raw](https://github.com/gracelawley)    
+*Slides made with the R package* [xaringan](https://github.com/yihui/xaringan)  
+These slides - [rendered](/slides/ruser_dataviz) & [raw](https://raw.githubusercontent.com/gracelawley/gracelawley/master/static/slides/ruser_dataviz.Rmd)    
   
-  
-Based on my CS 631 Final Visualization Project.  
-Write up & code available at: [grace.rbind.io/project/final_vis/](grace.rbind.io/project/final_vis/)  
+*Based on my CS 631 Final Visualization Project*  
+*Write up & code available at:*     [https://grace.rbind.io/project/final_vis/](/project/final_vis/)  
