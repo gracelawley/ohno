@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sentiment Analysis of a CHILDES corpus</title>
+    <title>Sentiment Analysis of a CHILDES Corpus</title>
     <meta charset="utf-8">
     <meta name="author" content="Grace Lawley" />
     <link href="ruser_dataviz_files/remark-css-0.0.1/default.css" rel="stylesheet" />
@@ -12,7 +12,7 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Sentiment Analysis of a CHILDES corpus
+# Sentiment Analysis of a CHILDES Corpus
 ## CS 631 Final Project, part 2
 ### Grace Lawley
 ### August 14th, 2018
@@ -25,23 +25,36 @@ class: center, middle, inverse, title-slide
 
 * Child Language Data Exchange System (CHILDES)  
 
-  + Online repository of language acquisition data
+--
+
+    + Online repository of language acquisition data
   
-  + Corpora of child speech are very hard to come by
+--
   
-  + Used to study language development, language acquisition, etc.
+    + Used to study language development, second language acquisition, child directed speech
+  
+--
+  
+* Why is CHILDES special?
   
 --
 
+    + Corpora of children speaking North American English are **very** hard to come by
+  
+---
+# The Dataset
+
 * CHILDES → Eng-NA → **Kuczaj Corpus**
 
-  + Longitudional Case Study
-  
-  + 1 target child: Abe
-  
-  + ~2 - ~5 years old
-  
-  + 210 transcripts (average of 810 words long)
+--
+
+    + Longitudional Case Study
+    
+    + 1 target child: **Abe**
+    
+    + ~2 - ~5 years old
+    
+    + 210 transcripts (average of 810 words long)
   
 ---
 
@@ -52,6 +65,9 @@ class: center, middle, inverse, title-slide
 --
 
 * Some raw utterances:
+
+--
+
 
 ```
 ## [1] "okay that's a alligator he got a cigar"
@@ -64,10 +80,10 @@ class: center, middle, inverse, title-slide
 
 --
 
-* Cleaned, processed, &amp; tokenized the data
+- **Cleaned**, **processed**, &amp; **tokenized** the data
 
 ---
-# Sentiment Analysis
+# The Sentiment Analysis
 
 --
 
@@ -75,7 +91,18 @@ class: center, middle, inverse, title-slide
 
 --
 
-  + Classifies words into 10 different sentiment categories: **anger**, **disgust**, **fear**, **joy**, **negative**, **positive**, **sadness**, **surprise**, and **trust**
+    + Classifies words into 10 different sentiment categories: 
+
+        - *anger*  
+        - *disgust*    
+        - *fear*  
+        - *joy*  
+        - *negative*  
+        - *sadness*  
+        - *anticipation*  
+        - *surprise*  
+        - *trust*  
+        - *positive*  
 
 --
 
@@ -87,35 +114,35 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# Chose a subset of 6
+# Six sentiments
 
 --
 
-**Positive** 
-
---
+.pull-left[
+## Positive
 
 + *trust* 
 
 + *joy*
 
 + *anticipation*  
+]
 
 --
 
-**Negative** 
-
---
+.pull-right[
+## Negative
 
 + *sadness*
 
 + *fear*
 
 + *anger*
+]
 
 ---
 # The Original Plot
-![](ruser_dataviz_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+&lt;img src="ruser_dataviz_files/figure-html/unnamed-chunk-2-1.png" width="2700" /&gt;
 
 ---
 # Problems
@@ -143,7 +170,7 @@ class: center, middle, inverse, title-slide
 
 * ~86% of tokens were lost when filtering against the NRC Word-Emotion Association Lexicon 
 
-* &lt;span style="color:red"&gt;Transcript length varies a lot&lt;/span&gt;
+* &lt;span style="color:blue"&gt;**Transcript length varies a lot**&lt;/span&gt;
 
 * Distribution of transcripts across the ages varies a lot
 
@@ -151,7 +178,9 @@ class: center, middle, inverse, title-slide
 ---
 # Normalization
 
-* Binned age into months
+* Binned age into months:
+
+    + `30.13204`, `30.19775`, `30.32916`,...`30.59200` → `30`
 
 --
 
@@ -162,7 +191,7 @@ class: center, middle, inverse, title-slide
     * `n_percent = n_sentiment/n_tokens`
 
 --
-![](ruser_dataviz_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
+&lt;img src="ruser_dataviz_files/figure-html/unnamed-chunk-3-1.png" width="3150" /&gt;
 
 ---
 class: inverse, center, middle
@@ -170,36 +199,61 @@ class: inverse, center, middle
 
 ---
 # Version 1
-![](ruser_dataviz_files/figure-html/plot1-1.png)&lt;!-- --&gt;
+&lt;img src="ruser_dataviz_files/figure-html/plot1-1.png" width="2700" /&gt;
   
 ---
 # Version 2
-![](ruser_dataviz_files/figure-html/plot2-1.png)&lt;!-- --&gt;
+&lt;img src="ruser_dataviz_files/figure-html/plot2-1.png" width="2700" /&gt;
 
 ---
 # Version 3
-![](ruser_dataviz_files/figure-html/plot3-1.png)&lt;!-- --&gt;
+&lt;img src="ruser_dataviz_files/figure-html/plot3-1.png" width="2700" /&gt;
 
 ---
 # Version 4
-![](ruser_dataviz_files/figure-html/plot4-1.png)&lt;!-- --&gt;
+&lt;img src="ruser_dataviz_files/figure-html/plot4-1.png" width="2700" /&gt;
 
 ---
 # Version 5
-![](ruser_dataviz_files/figure-html/plot5-1.png)&lt;!-- --&gt;
+&lt;img src="ruser_dataviz_files/figure-html/plot5-1.png" width="2700" /&gt;
 
 ---
 # Version 5.1
-![](ruser_dataviz_files/figure-html/plot5_1-1.png)&lt;!-- --&gt;
+&lt;img src="ruser_dataviz_files/figure-html/plot5_1-1.png" width="2700" /&gt;
 
 ---
-# Version 5.2
-![](ruser_dataviz_files/figure-html/plot5_2-1.png)&lt;!-- --&gt;
+# The Final Version
+
+--
+
+&lt;img src="ruser_dataviz_files/figure-html/plot5_2-1.png" width="2700" /&gt;
+
+---
+class: inverse, center, middle
+
+# Thank you!
+
+*Github Repository:*   
+[gracelawley/kuczaj-corpus](https://github.com/gracelawley/kuczaj-corpus)  
+  
+  
+  
+*Write up &amp; code available at:*    
+[grace.rbind.io/project/kuczaj_pt2/](/project/kuczaj_pt2/)
+  
+  
+  
+*Slides made with the R package* [xaringan](https://github.com/yihui/xaringan)  
+These slides - [rendered](/slides/ruser_dataviz) &amp; [raw](https://raw.githubusercontent.com/gracelawley/gracelawley/master/static/slides/ruser_dataviz.Rmd)    
+  
+*Based on my CS 631 Final Visualization Project*  
+*Write up &amp; code available at:*      
+[grace.rbind.io/project/final_vis/](/project/final_vis/)
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
 "highlightStyle": "atelier-lakeside-light",
-"highlightLines": true,
+"highlightLines": false,
 "countIncrementalSlides": false
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {

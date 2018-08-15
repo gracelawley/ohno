@@ -37,8 +37,10 @@ tags = []
 url_pdf = ""
 url_slides = "slides/ruser_dataviz"
 url_video = ""
-url_code = "https://raw.githubusercontent.com/gracelawley/gracelawley/master/content/project/kuczaj_pt2.Rmd"
-url_custom = [{name = "Github Repo", url = "https://github.com/gracelawley/kuczaj-corpus"}]
+url_code = ""
+url_custom = [{name = "Project Code", url = "https://raw.githubusercontent.com/gracelawley/gracelawley/master/content/project/kuczaj_pt2.Rmd"},
+              {name = "Github Repo", url = "https://github.com/gracelawley/kuczaj-corpus"},
+              {name = "Raw Slides", url = "https://raw.githubusercontent.com/gracelawley/gracelawley/master/static/slides/ruser_dataviz.Rmd"}]
 
 # Does the content use math formatting?
 math = true
