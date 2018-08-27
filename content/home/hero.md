@@ -4,7 +4,7 @@ widget = "hero"
 active = true
 date = 2017-10-15T00:00:00
 
-title = " "
+title = "Grace Lawley"
 
 # Order that this section will appear in.
 weight = 3
@@ -16,7 +16,6 @@ weight = 3
   overlay_img = "headers/rabuzin_1_wide.jpg"  # Image path relative to your `static/img/` folder.
   caption = "Ivan Rabuzin"
   #overlay_filter = 0.5  # Darken the image. Value in range 0-1.
-
 # Call to action button (optional).
 #   Activate the button by specifying a URL and button label below.
 #   Deactivate by commenting out parameters, prefixing lines with `#`.
@@ -25,6 +24,7 @@ weight = 3
 #  label = '<i class="fa fa-download"></i> Install Now'
 +++
 
+Computer Science & Electrical Engineering PhD Student
 <br>
 <iframe style="display: inline-block;
 scrolling="0" width="158px" height="400px" frameborder="0"></iframe>

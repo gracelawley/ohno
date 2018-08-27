@@ -51,7 +51,7 @@ enableGitInfo = true
 
   # Your details.
   name = "Grace Lawley"
-  role = "Computer Science & Engineering PhD Student"
+  role = "Computer Science & Electrical Engineering PhD Student"
 
   # Organizations/Affiliations.
   #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.
@@ -144,8 +144,12 @@ enableGitInfo = true
   #   https://sourcethemes.com/academic/docs/writing-markdown-latex/#highlighting-options
   highlight = true
   highlight_languages = ["r"]
-  highlight_style = "atelier-cave-dark"
-  # highlight_style = "github"
+  
+  #highlight_style = "github" # gray background
+  #highlight_style = "atelier-lakeside-light" # blue background
+  #highlight_style = "dark" 
+  highlight_style = "codepen-embed" # dark background
+  #highlight_style = "atelier-cave-light" # purple background
 
   # Enable native social sharing buttons?
   sharing = true

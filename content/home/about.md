@@ -15,7 +15,8 @@ weight = 5
     "Computational Linguistics",
     "Natural Language Processing",
     "Data Science",
-    "R"
+    "R",
+    "Discrete Math"
   ]
 
 # List your qualifications (such as academic degrees).
@@ -29,7 +30,7 @@ weight = 5
 
 # About Me
 
-Hi! My name is Grace Lawley. I am a first-year Ph.D student in the Computer Science & Electrical Engineering program at the [Center for Spoken Language Understanding (CSLU)](https://www.ohsu.edu/xd/research/centers-institutes/center-for-spoken-language-understanding/) at [Oregon Health & Science University (OHSU)](https://www.ohsu.edu/xd/) in Portland, Oregon.
+Hi! My name is Grace Lawley. I am a first-year Ph.D student in the [Computer Science & Electrical Engineering (CSEE)](https://www.ohsu.edu/xd/education/schools/school-of-medicine/departments/basic-science-departments/csee/) program at the [Center for Spoken Language Understanding (CSLU)](https://www.ohsu.edu/xd/research/centers-institutes/center-for-spoken-language-understanding/) at [Oregon Health & Science University (OHSU)](https://www.ohsu.edu/xd/) in Portland, Oregon.
 
 I graduated from Lewis & Clark College in 2017 with a B.A. in Mathematics. My interests include discrete math, data science, computational linguistics, Rachmaninoff, ceramics, and the programming language R.
 
