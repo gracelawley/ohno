@@ -24,7 +24,7 @@ weight = 3
 #  label = '<i class="fa fa-download"></i> Install Now'
 +++
 
-Computer Science & Electrical Engineering PhD Student
+Computer Science & Engineering PhD Student
 <br>
 <iframe style="display: inline-block;
 scrolling="0" width="158px" height="400px" frameborder="0"></iframe>
